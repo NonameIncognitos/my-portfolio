@@ -73,13 +73,12 @@ const mockData: AboutProps = {
     ]
 }
 const Container: React.FC<ContainerProps> = ({ children, topPadding="pt-24" }) => (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-800 p-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900  to-gray-800 text-white p-8">
         <div className={`container mx-auto ${sans3.className} ${topPadding}`}>
             {children}
         </div>
     </div>
 );
-
 const About: React.FC<AboutProps> = ({ name, title, profileImage, bio, skills, experiences }) => {
     const keySkills = skills.filter(skill => skill.isKey);
     const otherSkills = skills.filter(skill => !skill.isKey);
@@ -103,19 +102,19 @@ const About: React.FC<AboutProps> = ({ name, title, profileImage, bio, skills, e
                         />
                         <div className="text-center mb-6">
                             <h1 className="text-2xl font-bold mb-2">{name}</h1>
-                            <p className="text-lg text-yellow-600">{title}</p>
+                            <p className="text-lg text-yellow-400">{title}</p>
                         </div>
                         <div className="text-center mb-6">
                             <p className="text-xl font-semibold">Total Experience</p>
-                            <p className="text-3xl text-yellow-600">{totalExperience} years</p>
+                            <p className="text-3xl text-yellow-400">{totalExperience} years</p>
                         </div>
                         <div>
-                            <h2 className="text-xl font-semibold mb-4 text-yellow-600">Key Skills</h2>
+                            <h2 className="text-xl font-semibold mb-4 text-yellow-400">Key Skills</h2>
                             <div className="flex flex-wrap gap-2">
                                 {keySkills.map((skill, index) => (
                                     <Link href={skill.link || '#'} key={index}>
-                                        <div className="bg-yellow-100 rounded-lg p-2 text-sm">
-                                            <span className="font-semibold text-yellow-700">{skill.name}</span>
+                                        <div className="bg-yellow-400 bg-opacity-20 rounded-lg p-2 text-sm">
+                                            <span className="font-semibold text-yellow-400">{skill.name}</span>
                                         </div>
                                     </Link>
                                 ))}
@@ -126,29 +125,29 @@ const About: React.FC<AboutProps> = ({ name, title, profileImage, bio, skills, e
                     {/* 3/4 колонка */}
                     <div className="md:col-span-3">
                         <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-yellow-600">About Me</h2>
-                            <p className="text-gray-700 leading-relaxed">{bio}</p>
+                            <h2 className="text-2xl font-semibold mb-4 text-yellow-400">About Me</h2>
+                            <p className="text-gray-300 leading-relaxed">{bio}</p>
                         </section>
 
                         <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-6 text-yellow-600">Experience</h2>
+                            <h2 className="text-2xl font-semibold mb-6 text-yellow-400">Experience</h2>
                             <div className="space-y-6">
                                 {experiences.map((exp, index) => (
-                                    <div key={index} className="bg-white rounded-lg p-6 shadow-md">
+                                    <div key={index} className="bg-gray-800 rounded-lg p-6 shadow-lg">
                                         <h3 className="text-xl font-semibold mb-2">{exp.title}</h3>
-                                        <p className="text-yellow-600 mb-2">{exp.company} | {exp.period}</p>
-                                        <p className="text-gray-600">{exp.description}</p>
+                                        <p className="text-yellow-400 mb-2">{exp.company} | {exp.period}</p>
+                                        <p className="text-gray-400">{exp.description}</p>
                                     </div>
                                 ))}
                             </div>
                         </section>
 
                         <section>
-                            <h2 className="text-2xl font-semibold mb-6 text-yellow-600">Other Skills</h2>
+                            <h2 className="text-2xl font-semibold mb-6 text-yellow-400">Other Skills</h2>
                             <div className="flex flex-wrap gap-4">
                                 {otherSkills.map((skill, index) => (
-                                    <div key={index} className="bg-gray-100 rounded-lg p-3">
-                                        <span className="text-sm text-gray-700">{skill.name}</span>
+                                    <div key={index} className="bg-gray-700 rounded-lg p-3">
+                                        <span className="text-sm">{skill.name}</span>
                                     </div>
                                 ))}
                             </div>
