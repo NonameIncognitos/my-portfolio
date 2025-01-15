@@ -79,7 +79,7 @@ const Footer: React.FC<FooterProps> = ({ userEmail, userName, userDescription })
                 >
                     <h3 className="text-xl font-semibold text-yellow-400">Quick Links</h3>
                     <nav className="flex flex-col space-y-2">
-                        {navigationItems.map((item, index) => (
+                        {navigationItems.map((item) => (
                             <motion.div
                                 key={item.href}
                                 whileHover={{ x: 10 }}
@@ -106,7 +106,7 @@ const Footer: React.FC<FooterProps> = ({ userEmail, userName, userDescription })
                     <h3 className="text-xl font-semibold text-yellow-400">Connect</h3>
                     <p className="text-sm text-gray-300">Stay in touch with us:</p>
                     <div className="flex space-x-4">
-                        {socialLinks.map((social, index) => (
+                        {socialLinks.map((social) => (
                             <motion.div
                                 key={social.alt}
                                 whileHover={{ scale: 1.2, rotate: 5 }}

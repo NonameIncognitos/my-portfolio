@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sans3 } from "@/app/assets/fonts";
-import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt, FaTelegram } from 'react-icons/fa';
+import { FaLinkedin, FaGithub,  FaEnvelope, FaPhone, FaMapMarkerAlt, FaTelegram } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 
 const SkillSphere = dynamic(() => import('../helpers/SkillSphere'), { ssr: false });

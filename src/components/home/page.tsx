@@ -38,7 +38,7 @@ const Home: React.FC<HomeProps> = ({ name, title, backgroundImage }) => {
 
             <div className={`relative z-10 ${sans3.className} text-white text-center px-4 max-w-3xl`}>
                 <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-                    <span className="text-gray-300">Hello, I'm </span>
+                    <span className="text-gray-300">Hello, I&apos;m </span>
                     <span className="text-yellow-400">{name}</span>
                 </h1>
                 <p className="mt-6 text-xl md:text-2xl font-light leading-relaxed text-gray-300">
