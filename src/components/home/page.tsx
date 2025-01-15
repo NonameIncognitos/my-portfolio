@@ -3,6 +3,7 @@ import React from "react";
 import Image from 'next/image';
 import backgroundImage from "@/app/assets/unsplash_kmafxTVsfG8.svg";
 import { sans3 } from "@/app/assets/fonts";
+import { useRouter } from "next/navigation";
 
 interface HomeProps {
     name: string;
@@ -19,6 +20,12 @@ const HomeContent: HomeProps[] = [
 ]
 
 const Home: React.FC<HomeProps> = ({ name, title, backgroundImage }) => {
+
+    const router = useRouter();
+
+    const handleNavigation = (section: string) => {
+        router.push(`/#${section}`);
+    };
     return (
         <div className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
             <Image 
@@ -38,10 +45,12 @@ const Home: React.FC<HomeProps> = ({ name, title, backgroundImage }) => {
                     {title}
                 </p>
                 <div className="mt-12 flex justify-center space-x-6">
-                    <button className="px-8 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-md hover:bg-yellow-300 transition duration-300">
+                    <button className="px-8 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-md hover:bg-yellow-300 transition duration-300"
+                        onClick={() => handleNavigation("projects")}>
                         My Work
                     </button>
-                    <button className="px-8 py-3 border border-yellow-400 text-yellow-400 font-semibold rounded-md hover:bg-yellow-400 hover:text-gray-900 transition duration-300">
+                    <button className="px-8 py-3 border border-yellow-400 text-yellow-400 font-semibold rounded-md hover:bg-yellow-400 hover:text-gray-900 transition duration-300"
+                        onClick={() => handleNavigation("contact")}>
                         Contact
                     </button>
                 </div>

@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { sans3 } from "@/app/assets/fonts";
-import Sidebar from "./Sidebar";
+import Sidebar from "../sidebar/Sidebar";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/navigation";
 
 interface NavItem {
     title: string;
@@ -37,11 +38,14 @@ const HeaderContainer: React.FC<HeaderContaierProps> = ({children}) => {
 }
 
 const Header: React.FC<HeaderProps> = ({nameUser})=> {
-    const [isLanguageMenuOpen, setIsLanguageMenuOpen] = React.useState<boolean>(false);
-    const [selectedLanguage, setSelectedLanguage] = React.useState<string>("EN");
-    const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
-    const [isScrolled, setIsScrolled] = React.useState<boolean>(false);
-    const languageRef = React.useRef<HTMLDivElement>(null);
+    const { t } = useTranslation();
+    const router = useRouter();
+
+    const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState<boolean>(false);
+    const [selectedLanguage, setSelectedLanguage] = useState<string>("EN");
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    const [isScrolled, setIsScrolled] = useState<boolean>(false);
+    const languageRef = useRef<HTMLDivElement>(null);
 
     const toggleLanguageMenu = () => {
         setIsLanguageMenuOpen(!isLanguageMenuOpen);
@@ -51,13 +55,14 @@ const Header: React.FC<HeaderProps> = ({nameUser})=> {
         e.stopPropagation();
         setSelectedLanguage(lang);
         setIsLanguageMenuOpen(false);
+        router.push(router.pathname, router.asPath, { locale: lang.toLowerCase() });
     };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
                 setIsLanguageMenuOpen(false);
@@ -70,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({nameUser})=> {
         };
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
@@ -80,10 +85,10 @@ const Header: React.FC<HeaderProps> = ({nameUser})=> {
     }, []);
 
     const navigationItems: NavItem[] = [
-        { title: "Home", href: "/" },
-        { title: "About", href: "/about" },
-        { title: "Projects", href: "/projects" },
-        { title: "Contact", href: "/contact" },
+        { title: t("home"), href: "#home" },
+        { title: t("about"), href: "#about" },
+        { title: t("projects"), href: "#projects" },
+        { title: t("contact"), href: "#contact" },
     ];
 
     const socialLinks:SocialItem[] = [
